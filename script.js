@@ -45,7 +45,7 @@ function displayResult(result){
     city.textContent = `${result.name}, ${result.sys.country}`;
 
     //date (тут ее вызываем, чтобы она по очереди тут показалась), а описание на строке 67
-    getOurDate();
+    getOurDate(result.timezone);
 
     let temperature = document.querySelector("#temperature");
     temperature.innerHTML = `${Math.round(result.main.temp)}<span>°</span>`; //innerHTML чтобы отобразить знак градуса
@@ -61,11 +61,15 @@ function displayResult(result){
     //variation.innerHTML = `Min: ${Math.round(result.main.temp_min)}<span>°</span> Max: ${Math.round(result.main.temp_max)}<span>°</span>`;
     variation.innerHTML = "Min: " + `${Math.round(result.main.temp_min)}<span>°</span>` + " Max: " + `${Math.round(result.main.temp_max)}<span>°</span>`;
 }
-//для даты создаем функцию:
-function getOurDate() {
+//для даты создаем функцию с учетом timezone города:
+function getOurDate(timezone) {
     //today's day
     const myDate = new Date();
     //console.log(myDate);
+
+    const utcTime = myDate.getTime() + myDate.getTimezoneOffset() * 60000;
+    // локальное время города
+    const cityTime = new Date(utcTime + timezone * 1000);
 
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     /* week day (по методу getDay будут показаны цифры дней недели, начиная с воскресенья)
@@ -74,21 +78,26 @@ function getOurDate() {
     //date
     let todayDate = document.querySelector("#date").innerHTML = myDate.getDate();
     console.log(todayDate); // но в этом случае у нас день недели заменится числом (датой) поэтому перепишем так: */
-    let day = days[myDate.getDay()];
-    console.log(day);
-    let todayDate = myDate.getDate();
-    console.log(todayDate);
+    // let day = days[myDate.getDay()];
+    // console.log(day);
+    // let todayDate = myDate.getDate();
+    // console.log(todayDate);
 
     //month
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let month = months[myDate.getMonth()];
-    console.log(month);
+    // let month = months[myDate.getMonth()];
+    // console.log(month);
 
     //year
-    let year = myDate.getFullYear();
-    console.log(year);
+    // let year = myDate.getFullYear();
+    // console.log(year);
 
+    const dayName = days[cityTime.getDay()];
+    const day = cityTime.getDate();
+    const month = months[cityTime.getMonth()];
+    const year = cityTime.getFullYear();
     //теперь отражаем это всё:
     let actualDate = document.querySelector("#date");
-    actualDate.innerHTML = `${day}` + " " + `${todayDate}` + " " + `${month}` + " " + `${year}`
+    actualDate.textContent = `${dayName} ${day} ${month} ${year}`;
 }
+getOurDate();
