@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+
+        <div id="header">
+            <input type="text" spellcheck="false" placeholder="Please enter a city..." id="input"> 
+            <!-- добавляем spellcheck="false", чтобы система не проверяла название города на ошибку, если не с заглавной буквы -->
+        </div>
+    <!-- можно каждую строку добавлять в отдельный div -->
+        <div id="when-where">
+            <p id="city">Los Angeles, CA</p>
+            <p id="date">Monday 16 December 2024</p>
+        </div>
+
+        <div id="now">
+            <p id="temperature">8°</p>
+            <p id="feelsLike">Feels like: 10°</p>
+            <p id="conditions">Sunny</p>
+            <p id="variation">Min: 6° Max: 14°</p>
+        </div>
+
+
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
