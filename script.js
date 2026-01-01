@@ -80,7 +80,7 @@ function getOurDate() {
     console.log(todayDate);
 
     //month
-    const months = ["December", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let month = months[myDate.getMonth()];
     console.log(month);
 
