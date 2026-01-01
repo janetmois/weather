@@ -64,10 +64,12 @@ function displayResult(result){
 //для даты создаем функцию с учетом timezone города:
 function getOurDate(timezone) {
     //today's day
-    const myDate = new Date();
+    // const myDate = new Date();
     //console.log(myDate);
 
-    const utcTime = myDate.getTime() + myDate.getTimezoneOffset() * 60000;
+    // текущее UTC-время в миллисекундах
+    const nowUtc = Date.now();
+    // const utcTime = myDate.getTime() + myDate.getTimezoneOffset() * 60000;
     // локальное время города
     const cityTime = new Date(utcTime + timezone * 1000);
 
