@@ -100,4 +100,4 @@ function getOurDate(timezone) {
     let actualDate = document.querySelector("#date");
     actualDate.textContent = `${dayName} ${day} ${month} ${year}`;
 }
-getOurDate();
+// getOurDate();
