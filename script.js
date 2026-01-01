@@ -69,8 +69,7 @@ function getOurDate(timezone) {
 
     // текущее UTC-время в миллисекундах
     const nowUtc = Date.now();
-    // const utcTime = myDate.getTime() + myDate.getTimezoneOffset() * 60000;
-    // локальное время города
+    const utcTime = nowUtc + (new Date().getTimezoneOffset() * 60000);     // локальное время города
     const cityTime = new Date(utcTime + timezone * 1000);
 
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
