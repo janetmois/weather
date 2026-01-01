@@ -22,7 +22,7 @@ function enter(e){
 //это будет async JS
 async function getInfo(data){ //data - параметр (любое название)
                             //ссылка на сайт,погода,data-город
-    const res = await fetch(`${api.endpoint}weather?q=${data}&units=metric&appID=${api.key}`) //связыываем с сылкой
+    const res = await fetch(`${api.endpoint}weather?q=${data}&units=metric&appid=${api.key}`) //связыываем с сылкой
     //console.log(res);
     const result = await res.json();
     /*температура сейчас:
@@ -69,9 +69,8 @@ function getOurDate(timezone) {
 
     // текущее UTC-время в миллисекундах
     const nowUtc = Date.now();
-    const utcTime = nowUtc + (new Date().getTimezoneOffset() * 60000);     // локальное время города
-    const cityTime = new Date(utcTime + timezone * 1000);
-
+const utcTime = nowUtc + new Date().getTimezoneOffset() * 60000; // текущее UTC
+const cityTime = new Date(utcTime + timezone * 1000); // городское время
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     /* week day (по методу getDay будут показаны цифры дней недели, начиная с воскресенья)
     let day = document.querySelector("#date").innerHTML = days[myDate.getDay()];
